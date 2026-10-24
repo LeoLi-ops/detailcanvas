@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & FAQ - DetailCanvas</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --secondary: #6e6e73;
+            --card-bg: #f5f5f7;
+            --accent: #5e5ce6;
+            --border: #d2d2d7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #000000;
+                --text: #f5f5f7;
+                --secondary: #86868b;
+                --card-bg: #1c1c1e;
+                --accent: #7d7aff;
+                --border: #38383a;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: var(--secondary);
+            font-size: 16px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .faq-answer {
+            color: var(--secondary);
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(94, 92, 230, 0.1), rgba(94, 92, 230, 0.03));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 36px 0;
+            text-align: center;
+        }
+        .contact-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-weight: 600;
+            margin-top: 12px;
+            text-decoration: none !important;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--secondary);
+            font-size: 14px;
+            text-align: center;
+        }
+        .nav-links {
+            margin-bottom: 16px;
+        }
+        .nav-links a {
+            margin: 0 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-links">
+                <a href="index.html">DetailCanvas Home</a> • 
+                <a href="privacy.html">Privacy Policy</a> • 
+                <a href="terms.html">Terms of Service</a> • 
+                <a href="support.html">Support</a>
+            </div>
+            <h1>Customer Support & FAQ</h1>
+            <div class="subtitle">Need help with DetailCanvas? We're here for you.</div>
+        </header>
+
+        <div class="contact-box">
+            <h3>Have a Question or Found a Bug?</h3>
+            <p>Our team is happy to assist you with any questions, bug reports, or feature requests.</p>
+            <a href="mailto:support@detailcanvas.app" class="button">Contact Support</a>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Are my photos uploaded to the cloud or external servers?</div>
+            <p class="faq-answer">Never. DetailCanvas processes all images 100% locally on your iPhone using the Apple Neural Engine (ANE) and Metal GPU. Your pictures never leave your device, and the app works completely offline.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What is the difference between "Ultra Clarity" and "Natural Smooth" modes?</div>
+            <p class="faq-answer"><strong>Ultra Clarity</strong> leverages the Apple Neural Engine for maximum sharpness, reconstructing crisp high-frequency micro-textures (ideal for portraits, hair, and close-ups). <strong>Natural Smooth</strong> provides smooth gradients and stable transitions (ideal for complex landscapes or wide-angle photography).</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I restore my Pro subscription on a new device?</div>
+            <p class="faq-answer">Open the side drawer menu in DetailCanvas, tap the Pro upgrade banner, and tap "Restore purchases" at the bottom of the paywall. Ensure you are signed in with the same Apple ID used to make the original purchase.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I cancel or manage my subscription?</div>
+            <p class="faq-answer">Open your iPhone <strong>Settings</strong> app &gt; tap your <strong>Apple Account profile</strong> at the top &gt; tap <strong>Subscriptions</strong> &gt; select <strong>DetailCanvas Pro</strong> &gt; tap <strong>Cancel Subscription</strong>.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How does the Private Photo Vault work?</div>
+            <p class="faq-answer">The Private Photo Vault stores photos in an isolated app sandbox protected by 256-bit encryption. The encryption key is kept inside your iOS Keychain, and unlocking the vault requires biometric verification (Face ID or Touch ID).</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Why did my upscale fail or take longer on an older image?</div>
+            <p class="faq-answer">Deep neural network upscaling requires substantial computational power. Very large input images are automatically tiled or safety-scaled to prevent device memory exhaustion. If you encounter any issue, try switching between Ultra Clarity and Natural Smooth modes.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 DetailCanvas. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
