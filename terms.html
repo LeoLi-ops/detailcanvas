@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - DetailCanvas</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
     <style>
         :root {
             --bg: #ffffff;
@@ -32,19 +33,96 @@
             padding: 40px 20px;
         }
         .container {
-            max-width: 760px;
+            max-width: 780px;
             margin: 0 auto;
         }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .nav-links {
+            font-size: 15px;
+        }
+        .nav-links a {
+            margin-right: 12px;
+            font-weight: 500;
+        }
+        .lang-select-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 12px;
+            gap: 6px;
+        }
+        .lang-select-wrapper select {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+        }
+        .globe-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
         header {
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 24px;
+        }
+        .index-header {
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 40px;
+        }
+        .app-icon {
+            width: 104px;
+            height: 104px;
+            border-radius: 22px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
         }
         h1 {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin: 0 0 8px 0;
             letter-spacing: -0.5px;
+        }
+        .index-title {
+            font-size: 38px;
+            letter-spacing: -0.8px;
+        }
+        .subtitle {
+            color: var(--secondary);
+            font-size: 16px;
+            margin: 0;
+        }
+        .tagline {
+            font-size: 19px;
+            color: var(--secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(94, 92, 230, 0.12);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
         .last-updated {
             color: var(--secondary);
@@ -68,16 +146,83 @@
         li {
             margin-bottom: 8px;
         }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 36px 0;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 24px;
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .card p {
+            color: var(--secondary);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.5;
+        }
         .highlight-box {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin: 24px 0;
             border-left: 4px solid var(--accent);
+            padding: 18px 22px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
         }
         .highlight-box p {
             margin: 0;
-            font-weight: 500;
+            font-size: 15px;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(94, 92, 230, 0.1), rgba(94, 92, 230, 0.03));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .contact-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .faq-answer {
+            color: var(--secondary);
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-weight: 600;
+            margin-top: 12px;
+            text-decoration: none !important;
+        }
+        .button:hover {
+            opacity: 0.9;
         }
         a {
             color: var(--accent);
@@ -94,67 +239,147 @@
             font-size: 14px;
             text-align: center;
         }
-        .nav-links {
+        .footer-nav {
             margin-bottom: 16px;
         }
-        .nav-links a {
+        .footer-nav a {
             margin: 0 12px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="top-nav">
             <div class="nav-links">
-                <a href="index.html">DetailCanvas Home</a> • 
-                <a href="privacy.html">Privacy Policy</a> • 
-                <a href="terms.html">Terms of Service</a> • 
-                <a href="support.html">Support</a>
+                <a href="index.html" data-i18n="nav_home">DetailCanvas Home</a> • 
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
             </div>
-            <h1>Terms of Service (EULA)</h1>
-            <div class="last-updated">Last Updated: October 24, 2026</div>
+            
+        <div class="lang-select-wrapper">
+            <span class="globe-icon">🌐</span>
+            <select id="lang-select" onchange="setLanguage(this.value)" aria-label="Language">
+                <option value="en">English</option><option value="zh">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option>
+            </select>
+        </div>
+    
+        </div>
+
+        <header>
+            <h1 data-i18n="h1">Terms of Service (EULA)</h1>
+            <div class="last-updated" data-i18n="updated">Last Updated: October 24, 2026</div>
         </header>
 
         <div class="highlight-box">
-            <p>By downloading or using the DetailCanvas application, these terms will automatically apply to you. Please read them carefully before using the app.</p>
+            <p data-i18n="summary">By downloading or using the DetailCanvas application, these terms will automatically apply to you. Please read them carefully before using the app.</p>
         </div>
 
-        <h2>1. Agreement to Terms</h2>
-        <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and DetailCanvas ("we", "us", or "our"). In addition to these Terms, your use of DetailCanvas is governed by Apple's Standard Licensed Application End User License Agreement (<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple Standard EULA</a>).</p>
+        <h2 data-i18n="s1_h">1. Agreement to Terms</h2>
+        <p data-i18n="s1_p">These Terms of Service ("Terms") constitute a legally binding agreement between you and DetailCanvas ("we", "us", or "our"). In addition to these Terms, your use of DetailCanvas is governed by Apple's Standard Licensed Application End User License Agreement (<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple Standard EULA</a>).</p>
 
-        <h2>2. License Grant</h2>
-        <p>We grant you a personal, revocable, non-exclusive, non-transferable, limited license to download, install, and use DetailCanvas on iOS devices that you own or control, strictly in accordance with these Terms and Apple App Store rules.</p>
+        <h2 data-i18n="s2_h">2. License Grant</h2>
+        <p data-i18n="s2_p">We grant you a personal, revocable, non-exclusive, non-transferable, limited license to download, install, and use DetailCanvas on iOS devices that you own or control, strictly in accordance with these Terms and Apple App Store rules.</p>
 
-        <h2>3. In-App Subscriptions (DetailCanvas Pro)</h2>
-        <p>DetailCanvas offers optional auto-renewable subscriptions to unlock unlimited enhancements and premium features:</p>
+        <h2 data-i18n="s3_h">3. In-App Subscriptions (DetailCanvas Pro)</h2>
+        <p data-i18n="s3_p">DetailCanvas offers optional auto-renewable subscriptions to unlock unlimited enhancements and premium features:</p>
         <ul>
-            <li><strong>Subscription Options:</strong> Pro Monthly and Pro Yearly.</li>
-            <li><strong>Billing:</strong> Payment will be charged to your Apple ID account at confirmation of purchase.</li>
-            <li><strong>Auto-Renewal:</strong> Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current billing period.</li>
-            <li><strong>Account Charging:</strong> Your account will be charged for renewal within 24 hours prior to the end of the current period at the original purchase price.</li>
-            <li><strong>Managing Subscriptions:</strong> You can manage or cancel your subscriptions anytime in your iPhone Settings &gt; [Your Apple Account] &gt; Subscriptions.</li>
-            <li><strong>Refunds:</strong> All purchases and refunds are subject to Apple's App Store refund policies and must be requested directly through Apple.</li>
+            <li data-i18n="s3_l1"><strong>Subscription Options:</strong> Pro Monthly and Pro Yearly.</li>
+            <li data-i18n="s3_l2"><strong>Billing:</strong> Payment will be charged to your Apple ID account at confirmation of purchase.</li>
+            <li data-i18n="s3_l3"><strong>Auto-Renewal:</strong> Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current billing period.</li>
+            <li data-i18n="s3_l4"><strong>Account Charging:</strong> Your account will be charged for renewal within 24 hours prior to the end of the current period at the original purchase price.</li>
+            <li data-i18n="s3_l5"><strong>Managing Subscriptions:</strong> You can manage or cancel your subscriptions anytime in your iPhone Settings &gt; [Your Apple Account] &gt; Subscriptions.</li>
+            <li data-i18n="s3_l6"><strong>Refunds:</strong> All purchases and refunds are subject to Apple's App Store refund policies and must be requested directly through Apple.</li>
         </ul>
 
-        <h2>4. User Content & Intellectual Property</h2>
-        <p>You retain full ownership and intellectual property rights in and to all images and photos you import into DetailCanvas. Because DetailCanvas operates entirely locally on your device, we never claim any rights, license, or ownership over your content.</p>
+        <h2 data-i18n="s4_h">4. User Content &amp; Intellectual Property</h2>
+        <p data-i18n="s4_p">You retain full ownership and intellectual property rights in and to all images and photos you import into DetailCanvas. Because DetailCanvas operates entirely locally on your device, we never claim any rights, license, or ownership over your content.</p>
 
-        <h2>5. Acceptable Use</h2>
-        <p>You agree not to use DetailCanvas for any unlawful purposes, or in violation of any applicable local, state, national, or international law, including the unauthorized modification of copyrighted works for which you do not have permission.</p>
+        <h2 data-i18n="s5_h">5. Acceptable Use</h2>
+        <p data-i18n="s5_p">You agree not to use DetailCanvas for any unlawful purposes, or in violation of any applicable local, state, national, or international law, including the unauthorized modification of copyrighted works for which you do not have permission.</p>
 
-        <h2>6. Disclaimer of Warranties</h2>
-        <p>DetailCanvas is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied. Image enhancement results may vary depending on the quality, resolution, and degradation of the original source image.</p>
+        <h2 data-i18n="s6_h">6. Disclaimer of Warranties</h2>
+        <p data-i18n="s6_p">DetailCanvas is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied. Image enhancement results may vary depending on the quality, resolution, and degradation of the original source image.</p>
 
-        <h2>7. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by applicable law, in no event shall DetailCanvas or its developers be liable for any indirect, punitive, incidental, special, or consequential damages arising out of or in any way connected with the use of the app.</p>
+        <h2 data-i18n="s7_h">7. Limitation of Liability</h2>
+        <p data-i18n="s7_p">To the maximum extent permitted by applicable law, in no event shall DetailCanvas or its developers be liable for any indirect, punitive, incidental, special, or consequential damages arising out of or in any way connected with the use of the app.</p>
 
-        <h2>8. Contact</h2>
-        <p>If you have any questions about these Terms, please reach out to:</p>
-        <p><a href="mailto:support@detailcanvas.app">support@detailcanvas.app</a></p>
+        <h2 data-i18n="s8_h">8. Contact</h2>
+        <p data-i18n="s8_p">If you have any questions about these Terms, please reach out to:</p>
+        <p><a href="mailto:leoliops@outlook.com">leoliops@outlook.com</a></p>
 
         <footer>
-            <p>&copy; 2026 DetailCanvas. All rights reserved.</p>
+            <div class="footer-nav">
+                <a href="index.html" data-i18n="nav_home">Home</a> • 
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
+            </div>
+            <p>&copy; 2026 DetailCanvas. <span data-i18n="footer_rights">All rights reserved.</span></p>
         </footer>
     </div>
+    
+    <script>
+        const I18N = {"nav_home": {"en": "DetailCanvas Home", "zh": "DetailCanvas 首页", "ja": "DetailCanvas ホーム", "ko": "DetailCanvas 홈", "es": "Inicio DetailCanvas", "fr": "Accueil DetailCanvas", "de": "DetailCanvas Startseite", "pt": "Início DetailCanvas"}, "nav_privacy": {"en": "Privacy Policy", "zh": "隐私政策", "ja": "プライバシーポリシー", "ko": "개인정보 처리방침", "es": "Política de Privacidad", "fr": "Politique de Confidentialité", "de": "Datenschutzerklärung", "pt": "Política de Privacidade"}, "nav_terms": {"en": "Terms of Service", "zh": "服务条款", "ja": "利用規約", "ko": "이용약관", "es": "Términos del Servicio", "fr": "Conditions d'Utilisation", "de": "Nutzungsbedingungen", "pt": "Termos de Serviço"}, "nav_support": {"en": "Support", "zh": "技术支持", "ja": "サポート", "ko": "고객 지원", "es": "Soporte", "fr": "Assistance", "de": "Kundensupport", "pt": "Suporte"}, "footer_rights": {"en": "All rights reserved.", "zh": "保留所有权利。", "ja": "無断転載を禁じます。", "ko": "All rights reserved.", "es": "Todos los derechos reservados.", "fr": "Tous droits réservés.", "de": "Alle Rechte vorbehalten.", "pt": "Todos os direitos reservados."}, "h1": {"en": "Terms of Service (EULA)", "zh": "服务条款与最终用户许可协议 (EULA)", "ja": "利用規約およびエンドユーザーライセンス契約 (EULA)", "ko": "이용약관 및 최종 사용자 라이선스 계약 (EULA)", "es": "Términos del Servicio (EULA)", "fr": "Conditions d'Utilisation (CLUF / EULA)", "de": "Nutzungsbedingungen (EULA)", "pt": "Termos de Serviço (EULA)"}, "updated": {"en": "Last Updated: October 24, 2026", "zh": "最后更新日期：2026年10月24日", "ja": "最終更新日：2026年10月24日", "ko": "최종 업데이트: 2026년 10월 24일", "es": "Última actualización: 24 de octubre de 2026", "fr": "Dernière mise à jour : 24 octobre 2026", "de": "Zuletzt aktualisiert: 24. Oktober 2026", "pt": "Última atualização: 24 de outubro de 2026"}, "summary": {"en": "By downloading or using the DetailCanvas application, these terms will automatically apply to you. Please read them carefully before using the app.", "zh": "当您下载或使用 DetailCanvas 应用程序时，即视为您已阅读并同意本协议全部条款。在使用本应用前请务必仔细阅读。", "ja": "DetailCanvasアプリをダウンロードまたは利用することにより、本規約に同意したものとみなされます。ご利用前に必ずお読みください。", "ko": "DetailCanvas 앱을 다운로드하거나 사용함으로써 본 약관에 동의하는 것으로 간주됩니다. 사용 전에 주의 깊게 읽어 주시기 바랍니다.", "es": "Al descargar o utilizar la aplicación DetailCanvas, aceptas estos términos. Por favor, léelos con atención.", "fr": "En téléchargeant ou en utilisant DetailCanvas, ces conditions s'appliquent automatiquement à vous. Veuillez les lire attentivement.", "de": "Durch das Herunterladen oder Verwenden von DetailCanvas stimmen Sie diesen Bedingungen zu. Bitte lesen Sie diese sorgfältig durch.", "pt": "Ao baixar ou usar o aplicativo DetailCanvas, estes termos se aplicarão a você. Por favor, leia-os com atenção."}, "s1_h": {"en": "1. Agreement to Terms", "zh": "1. 条款确认与协议关系", "ja": "1. 利用規約への同意", "ko": "1. 약관 동의 및 관계", "es": "1. Aceptación de los Términos", "fr": "1. Acceptation des Conditions", "de": "1. Zustimmung zu den Bedingungen", "pt": "1. Acordo com os Termos"}, "s1_p": {"en": "These Terms of Service (\"Terms\") constitute a legally binding agreement between you and DetailCanvas (\"we\", \"us\", or \"our\"). In addition to these Terms, your use of DetailCanvas is governed by Apple's Standard Licensed Application End User License Agreement (<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>).", "zh": "本服务条款（“条款”）是您与 DetailCanvas 之间订立的具有法律约束力的协议。除本条款外，您对 DetailCanvas 的使用还同时受 Apple 标准许可应用程序最终用户许可协议（<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>）的约束。", "ja": "本利用規約（以下「本規約」）は、お客様とDetailCanvasとの間で締結される法的合意です。本規約に加え、Appleの標準エンドユーザーライセンス契約（<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>）が適用されます。", "ko": "본 이용약관은 귀하와 DetailCanvas 간의 법적 구속력을 갖는 계약입니다. 본 약관과 더불어 Apple의 표준 라이선스 계약(<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>)이 함께 적용됩니다.", "es": "Estos Términos rigen el uso de DetailCanvas junto con el EULA Estándar de Apple (<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>).", "fr": "Ces conditions constituent un contrat juridiquement contraignant, complété par le contrat de licence standard Apple (<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>).", "de": "Diese Bedingungen stellen eine rechtliche Vereinbarung dar, ergänzt durch Apples Standard-EULA (<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>).", "pt": "Estes Termos constituem um acordo legal entre você e o DetailCanvas, regido também pelo EULA Padrão da Apple (<a href=\"https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\" target=\"_blank\">Apple Standard EULA</a>)."}, "s2_h": {"en": "2. License Grant", "zh": "2. 软件使用许可授予", "ja": "2. ライセンスの付与", "ko": "2. 라이선스 부여", "es": "2. Concesión de Licencia", "fr": "2. Concession de Licence", "de": "2. Lizenzgewährung", "pt": "2. Concessão de Licença"}, "s2_p": {"en": "We grant you a personal, revocable, non-exclusive, non-transferable, limited license to download, install, and use DetailCanvas on iOS devices that you own or control, strictly in accordance with these Terms and Apple App Store rules.", "zh": "我们授予您一项个人的、可撤销的、非独占的、不可转让的有限许可，允许您在您拥有或控制的 iOS 设备上下载、安装和使用 DetailCanvas，但前提是严格遵守本条款以及 Apple App Store 相关规则。", "ja": "当社は、お客様が所有または管理するiOS端末において、本規約およびApple App Storeの規定に従ってDetailCanvasを個人的にダウンロード、インストール、使用できる、限定的かつ譲渡不能な非独占ライセンスを付与します。", "ko": "본 약관 및 Apple App Store 규칙을 준수하는 조건으로, 귀하가 소유하거나 관리하는 iOS 기기에서 DetailCanvas를 개인적으로 다운로드하여 사용할 수 있는 제한적이고 양도 불가능한 라이선스를 부여합니다.", "es": "Te otorgamos una licencia limitada, personal, revocable e intransferible para usar DetailCanvas en tus dispositivos iOS compatibles.", "fr": "Nous vous accordons une licence limitée, personnelle, révocable et non transférable pour utiliser DetailCanvas sur vos appareils iOS.", "de": "Wir gewähren Ihnen eine persönliche, widerrufliche, nicht übertragbare Lizenz zur Nutzung von DetailCanvas auf Ihren iOS-Geräten.", "pt": "Concedemos a você uma licença pessoal, revogável, intransferível e limitada para usar o DetailCanvas em seus dispositivos iOS."}, "s3_h": {"en": "3. In-App Subscriptions (DetailCanvas Pro)", "zh": "3. 应用内订阅会员（DetailCanvas Pro）", "ja": "3. アプリ内定期購入（DetailCanvas Pro）", "ko": "3. 인앱 구독 (DetailCanvas Pro)", "es": "3. Suscripciones In-App (DetailCanvas Pro)", "fr": "3. Abonnements Intégrés (DetailCanvas Pro)", "de": "3. In-App-Abonnements (DetailCanvas Pro)", "pt": "3. Assinaturas no App (DetailCanvas Pro)"}, "s3_p": {"en": "DetailCanvas offers optional auto-renewable subscriptions to unlock unlimited enhancements and premium features:", "zh": "DetailCanvas 提供可选的自动续订订阅服务以解锁无限制高清增强等专业功能：", "ja": "DetailCanvasは、無制限の超解像処理などのPro機能を開放する自動更新サブスクリプションを提供しています：", "ko": "DetailCanvas는 무제한 초해상도 등 프리미엄 기능을 제공하는 자동 갱신 구독을 지원합니다:", "es": "DetailCanvas ofrece suscripciones autorrenovables para desbloquear mejoras ilimitadas:", "fr": "DetailCanvas propose des abonnements renouvelables automatiquement pour débloquer toutes les fonctionnalités :", "de": "DetailCanvas bietet optionale, sich automatisch verlängernde Abonnements:", "pt": "O DetailCanvas oferece assinaturas auto-renováveis para desbloquear recursos Pro:"}, "s3_l1": {"en": "<strong>Subscription Options:</strong> Pro Monthly and Pro Yearly.", "zh": "<strong>订阅选项：</strong> Pro 连续包月与 Pro 连续包年。", "ja": "<strong>プラン：</strong> Pro月額プラン および Pro年額プラン。", "ko": "<strong>구독 옵션:</strong> Pro 월간 및 Pro 연간 구독.", "es": "<strong>Opciones:</strong> Pro Mensual y Pro Anual.", "fr": "<strong>Formules :</strong> Pro Mensuel et Pro Annuel.", "de": "<strong>Optionen:</strong> Pro Monatlich und Pro Jährlich.", "pt": "<strong>Opções:</strong> Pro Mensal e Pro Anual."}, "s3_l2": {"en": "<strong>Billing:</strong> Payment will be charged to your Apple ID account at confirmation of purchase.", "zh": "<strong>账单与扣费：</strong> 在您确认购买时，款项将直接从您的 Apple ID 账户中扣除。", "ja": "<strong>お支払い：</strong> 購入確認時にお客様のApple IDアカウントへ請求されます。", "ko": "<strong>결제:</strong> 구매 확인 시 귀하의 Apple ID 계정으로 결제 금액이 청구됩니다.", "es": "<strong>Facturación:</strong> El pago se cargará a tu cuenta de Apple ID al confirmar la compra.", "fr": "<strong>Facturation :</strong> Le paiement sera débité de votre compte Apple ID à la confirmation d'achat.", "de": "<strong>Abrechnung:</strong> Die Zahlung wird bei Kaufbestätigung über Ihre Apple-ID abgerechnet.", "pt": "<strong>Cobrança:</strong> O pagamento será cobrado em sua conta do ID Apple na confirmação da compra."}, "s3_l3": {"en": "<strong>Auto-Renewal:</strong> Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current billing period.", "zh": "<strong>自动续订：</strong> 除非在当前计费周期结束前至少 24 小时关闭自动续订，否则订阅将自动延期续费。", "ja": "<strong>自動更新：</strong> 現在の期間が終了する24時間前までに自動更新をオフにしない限り、自動的に更新されます。", "ko": "<strong>자동 갱신:</strong> 현재 기간 만료 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다.", "es": "<strong>Renovación automática:</strong> Se renueva automáticamente salvo que se cancele al menos 24 horas antes del vencimiento.", "fr": "<strong>Renouvellement automatique :</strong> Se renouvelle automatiquement sauf annulation au moins 24h avant la fin de la période en cours.", "de": "<strong>Automatische Verlängerung:</strong> Verlängert sich automatisch, sofern nicht 24 Stunden vor Ablauf gekündigt wird.", "pt": "<strong>Renovação Automática:</strong> A renovação ocorre automaticamente, a menos que cancelada pelo menos 24 horas antes do término."}, "s3_l4": {"en": "<strong>Account Charging:</strong> Your account will be charged for renewal within 24 hours prior to the end of the current period at the original purchase price.", "zh": "<strong>续费扣款：</strong> 您的账户将在当前计费周期结束前的 24 小时内按原订阅价格自动扣款续费。", "ja": "<strong>更新請求：</strong> 現在の利用期間終了前の24時間以内に更新料金が請求されます。", "ko": "<strong>갱신 결제:</strong> 현재 기간 종료 전 24시간 이내에 동일한 금액으로 갱신 결제가 진행됩니다.", "es": "<strong>Cargo de renovación:</strong> Se cobrará la renovación dentro de las 24 horas previas al término del período actual.", "fr": "<strong>Prélèvement :</strong> Votre compte sera prélevé dans les 24 heures précédant la fin de la période en cours.", "de": "<strong>Verlängerungsgebühr:</strong> Die Verlängerung wird innerhalb von 24 Stunden vor Ablauf abgerechnet.", "pt": "<strong>Cobrança de Renovação:</strong> A taxa de renovação será cobrada nas 24 horas anteriores ao término do período."}, "s3_l5": {"en": "<strong>Managing Subscriptions:</strong> You can manage or cancel your subscriptions anytime in your iPhone Settings &gt; [Your Apple Account] &gt; Subscriptions.", "zh": "<strong>管理订阅：</strong> 您可随时在 iPhone「设置」&gt; 点击顶部「Apple 账户」&gt;「订阅」中管理或取消您的订阅。", "ja": "<strong>管理・解約：</strong> iPhoneの「設定」&gt;「Appleアカウント」&gt;「サブスクリプション」からいつでも解約できます。", "ko": "<strong>구독 관리:</strong> 언제든지 iPhone 설정 &gt; [Apple 계정] &gt; 구독 메뉴에서 구독을 관리하거나 취소할 수 있습니다.", "es": "<strong>Gestión:</strong> Puedes cancelar tu suscripción en Ajustes de iPhone &gt; [Tu cuenta de Apple] &gt; Suscripciones.", "fr": "<strong>Gestion :</strong> Gérez ou résiliez dans Réglages iPhone &gt; [Votre compte Apple] &gt; Abonnements.", "de": "<strong>Verwaltung:</strong> Sie können Ihr Abo in den iPhone-Einstellungen &gt; [Ihr Apple-Konto] &gt; Abonnements verwalten.", "pt": "<strong>Gerenciamento:</strong> Cancele ou altere sua assinatura em Ajustes do iPhone &gt; [ID Apple] &gt; Assinaturas."}, "s3_l6": {"en": "<strong>Refunds:</strong> All purchases and refunds are subject to Apple's App Store refund policies and must be requested directly through Apple.", "zh": "<strong>退款规则：</strong> 所有购买与退款均遵循 Apple App Store 退款政策，需直接向 Apple 官方申请处理。", "ja": "<strong>返金規定：</strong> すべての返金はAppleの規定に従い、Appleへ直接申請する必要があります。", "ko": "<strong>환불 정책:</strong> 모든 구매 및 환불은 Apple의 정책에 따르며 Apple 지원팀으로 직접 신청해야 합니다.", "es": "<strong>Reembolsos:</strong> Todos los reembolsos están sujetos a las políticas de Apple y deben solicitarse a Apple.", "fr": "<strong>Remboursements :</strong> Soumis aux politiques d'Apple et doivent être demandés directement à Apple.", "de": "<strong>Rückerstattungen:</strong> Unterliegen den Apple-Richtlinien und müssen direkt bei Apple beantragt werden.", "pt": "<strong>Reembolsos:</strong> Todas as compras e reembolsos seguem as políticas da Apple e devem ser solicitados à Apple."}, "s4_h": {"en": "4. User Content &amp; Intellectual Property", "zh": "4. 用户内容与完整知识产权", "ja": "4. ユーザーコンテンツと知的財産権", "ko": "4. 사용자 콘텐츠 및 지적 재산권", "es": "4. Contenido del Usuario y Propiedad Intelectual", "fr": "4. Contenu Utilisateur &amp; Propriété Intellectuelle", "de": "4. Nutzerinhalte &amp; Geistiges Eigentum", "pt": "4. Conteúdo do Usuário e Propriedade Intelectual"}, "s4_p": {"en": "You retain full ownership and intellectual property rights in and to all images and photos you import into DetailCanvas. Because DetailCanvas operates entirely locally on your device, we never claim any rights, license, or ownership over your content.", "zh": "您对导入 DetailCanvas 的所有图像与相片保留完整的知识产权与所有权。由于 DetailCanvas 全流程在您的本地设备端运行，我们绝不会主张、获取或索求您的内容的任何版权或许可。", "ja": "お客様がDetailCanvasに取り込むすべての画像および写真に対する著作権および知的財産権は、完全にお客様に帰属します。すべての処理は端末内で行われるため、当社がお客様のコンテンツに対するいかなる権利も主張することはありません。", "ko": "귀하는 DetailCanvas로 가져오는 모든 이미지와 사진에 대한 완전한 소유권과 지적 재산권을 유지합니다. 앱이 기기 로컬에서만 작동하므로 당사는 사용자 콘텐츠에 대해 어떠한 권리도 요구하지 않습니다.", "es": "Mantienes la propiedad total de todas las imágenes que importas. Como la app funciona localmente, no reclamamos ningún derecho sobre tu contenido.", "fr": "Vous conservez l'entière propriété intellectuelle de vos images. Le traitement étant 100% local, nous ne revendiquons aucun droit sur votre contenu.", "de": "Sie behalten das vollständige Eigentum an allen importierten Bildern. Da die App lokal arbeitet, beanspruchen wir keinerlei Rechte daran.", "pt": "Você mantém a propriedade total de todas as imagens que importa. Como o app funciona localmente, não reivindicamos nenhum direito sobre seu conteúdo."}, "s5_h": {"en": "5. Acceptable Use", "zh": "5. 合规与合理使用", "ja": "5. 利用規約の遵守", "ko": "5. 적법한 사용", "es": "5. Uso Aceptable", "fr": "5. Utilisation Acceptable", "de": "5. Zulässige Nutzung", "pt": "5. Uso Aceitável"}, "s5_p": {"en": "You agree not to use DetailCanvas for any unlawful purposes, or in violation of any applicable local, state, national, or international law, including the unauthorized modification of copyrighted works for which you do not have permission.", "zh": "您同意不将 DetailCanvas 用于任何违法违规目的，或违反任何适用的法律法规，包括在未经授权或许可的情况下修改受著作权保护的他人作品。", "ja": "著作権侵害や違法行為など、適用される法令に違反する目的で本アプリを使用しないことに同意するものとします。", "ko": "귀하는 저작권 침해를 포함하여 현행 법률을 위반하거나 불법적인 목적으로 본 앱을 사용하지 않을 것에 동의합니다.", "es": "Aceptas no utilizar DetailCanvas para fines ilícitos ni infringir leyes locales o internacionales ni derechos de autor.", "fr": "Vous acceptez de ne pas utiliser l'application à des fins illégales ou en violation de droits d'auteur.", "de": "Sie erklären sich bereit, die App nicht für rechtswidrige Zwecke oder Urheberrechtsverletzungen zu nutzen.", "pt": "Você concorda em não usar o DetailCanvas para fins ilegais ou violações de direitos autorais."}, "s6_h": {"en": "6. Disclaimer of Warranties", "zh": "6. 免责声明", "ja": "6. 保証の否認", "ko": "6. 보증의 부인", "es": "6. Exclusión de Garantías", "fr": "6. Exclusion de Garanties", "de": "6. Gewährleistungsausschluss", "pt": "6. Isenção de Garantias"}, "s6_p": {"en": "DetailCanvas is provided on an \"AS IS\" and \"AS AVAILABLE\" basis without warranties of any kind, whether express or implied. Image enhancement results may vary depending on the quality, resolution, and degradation of the original source image.", "zh": "DetailCanvas 依“现状 (AS IS)”和“现有 (AS AVAILABLE)”基础提供，不提供任何形式的明示或暗示保证。画质增强效果会根据原始照片的清晰度、分辨率及受损程度而有所差异。", "ja": "DetailCanvasは「現状有姿」で提供され、いかなる明示または黙示の保証も行いません。超解像結果は元画像の品質や解像度によって異なる場合があります。", "ko": "DetailCanvas는 '있는 그대로' 제공되며 어떠한 명시적, 묵시적 보증도 제공하지 않습니다. 원본 화질에 따라 결과가 다를 수 있습니다.", "es": "DetailCanvas se proporciona 'TAL CUAL'. Los resultados de mejora pueden variar según la imagen de origen.", "fr": "DetailCanvas est fourni 'EN L'ÉTAT'. Les résultats d'amélioration peuvent varier selon la qualité de l'image source.", "de": "DetailCanvas wird 'WIE BESEHEN' bereitgestellt. Die Ergebnisse hängen vom Originalbild ab.", "pt": "O DetailCanvas é fornecido 'NO ESTADO EM QUE SE ENCONTRA'. Os resultados podem variar conforme a imagem original."}, "s7_h": {"en": "7. Limitation of Liability", "zh": "7. 责任限制", "ja": "7. 責任の制限", "ko": "7. 책임의 한계", "es": "7. Limitación de Responsabilidad", "fr": "7. Limitation de Responsabilité", "de": "7. Haftungsbeschränkung", "pt": "7. Limitação de Responsabilidade"}, "s7_p": {"en": "To the maximum extent permitted by applicable law, in no event shall DetailCanvas or its developers be liable for any indirect, punitive, incidental, special, or consequential damages arising out of or in any way connected with the use of the app.", "zh": "在适用法律允许的最大范围内，DetailCanvas 及其开发者不对因使用本应用而产生的任何间接、附带、特殊或后果性损害承担责任。", "ja": "適用法令の許す最大限の範囲において、本アプリの使用に起因するいかなる間接的・付随的・派生的損害についても責任を負いません。", "ko": "법률이 허용하는 최대 범위 내에서, 당사는 앱 사용과 관련하여 발생하는 간접적, 부수적 손해에 대해 책임을 지지 않습니다.", "es": "En la medida máxima permitida por la ley, DetailCanvas no será responsable de daños indirectos o consecuentes.", "fr": "Dans la mesure permise par la loi, DetailCanvas ne peut être tenu responsable des dommages indirects.", "de": "Im gesetzlich zulässigen Rahmen haftet DetailCanvas nicht für indirekte oder Folgeschäden.", "pt": "Na extensão máxima permitida por lei, o DetailCanvas não se responsabiliza por danos indiretos."}, "s8_h": {"en": "8. Contact", "zh": "8. 联系方式", "ja": "8. お問い合わせ", "ko": "8. 문의하기", "es": "8. Contacto", "fr": "8. Contact", "de": "8. Kontakt", "pt": "8. Contato"}, "s8_p": {"en": "If you have any questions about these Terms, please reach out to:", "zh": "若您对本条款有任何疑问，请通过以下邮箱联系我们：", "ja": "本利用規約に関するご質問がございましたら、下記までご連絡ください：", "ko": "본 이용약관에 대해 질문이 있으신 경우 다음 이메일로 연락해 주십시오:", "es": "Si tienes alguna pregunta sobre estos Términos, comunícate con nosotros en:", "fr": "Pour toute question sur ces conditions, contactez-nous à :", "de": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter:", "pt": "Se tiver dúvidas sobre estes Termos, entre em contato através de:"}};
+
+        function setLanguage(lang) {
+            if (!I18N['nav_privacy'][lang]) {
+                lang = 'en';
+            }
+            localStorage.setItem('dc_lang', lang);
+            
+            // Update select dropdown
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            // Update html lang attribute
+            const htmlLangMap = {
+                'en': 'en',
+                'zh': 'zh-CN',
+                'ja': 'ja',
+                'ko': 'ko',
+                'es': 'es',
+                'fr': 'fr',
+                'de': 'de',
+                'pt': 'pt-BR'
+            };
+            document.documentElement.lang = htmlLangMap[lang] || lang;
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (I18N[key] && I18N[key][lang]) {
+                    el.innerHTML = I18N[key][lang];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('dc_lang');
+            
+            let initialLang = 'en'; // Safe default for US App Store reviewers
+            
+            if (paramLang && I18N['nav_privacy'][paramLang]) {
+                initialLang = paramLang;
+            } else if (savedLang && I18N['nav_privacy'][savedLang]) {
+                initialLang = savedLang;
+            } else if (navigator.language) {
+                const nav = navigator.language.toLowerCase();
+                if (nav.startsWith('zh')) initialLang = 'zh';
+                else if (nav.startsWith('ja')) initialLang = 'ja';
+                else if (nav.startsWith('ko')) initialLang = 'ko';
+                else if (nav.startsWith('es')) initialLang = 'es';
+                else if (nav.startsWith('fr')) initialLang = 'fr';
+                else if (nav.startsWith('de')) initialLang = 'de';
+                else if (nav.startsWith('pt')) initialLang = 'pt';
+            }
+            
+            setLanguage(initialLang);
+        });
+    </script>
+    
 </body>
 </html>

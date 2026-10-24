@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DetailCanvas - AI Photo Upscaler for iPhone</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
     <style>
         :root {
             --bg: #ffffff;
@@ -32,13 +33,57 @@
             padding: 40px 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 780px;
             margin: 0 auto;
         }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .nav-links {
+            font-size: 15px;
+        }
+        .nav-links a {
+            margin-right: 12px;
+            font-weight: 500;
+        }
+        .lang-select-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 12px;
+            gap: 6px;
+        }
+        .lang-select-wrapper select {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+        }
+        .globe-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
         header {
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        .index-header {
             text-align: center;
-            margin-bottom: 48px;
-            padding-top: 20px;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 40px;
         }
         .app-icon {
             width: 104px;
@@ -48,17 +93,26 @@
             margin-bottom: 20px;
         }
         h1 {
-            font-size: 38px;
+            font-size: 32px;
             font-weight: 700;
-            margin: 0 0 12px 0;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+        .index-title {
+            font-size: 38px;
             letter-spacing: -0.8px;
         }
+        .subtitle {
+            color: var(--secondary);
+            font-size: 16px;
+            margin: 0;
+        }
         .tagline {
-            font-size: 20px;
+            font-size: 19px;
             color: var(--secondary);
             font-weight: 400;
-            max-width: 580px;
-            margin: 0 auto 28px auto;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
         }
         .badge {
             display: inline-block;
@@ -70,11 +124,33 @@
             font-weight: 600;
             margin-bottom: 16px;
         }
+        .last-updated {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        p, li {
+            font-size: 16px;
+            color: var(--text);
+        }
+        ul {
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
-            margin: 40px 0;
+            margin: 36px 0;
         }
         .card {
             background-color: var(--card-bg);
@@ -93,6 +169,61 @@
             margin: 0;
             line-height: 1.5;
         }
+        .highlight-box {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            padding: 18px 22px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+        .highlight-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(94, 92, 230, 0.1), rgba(94, 92, 230, 0.03));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .contact-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .faq-answer {
+            color: var(--secondary);
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-weight: 600;
+            margin-top: 12px;
+            text-decoration: none !important;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
         a {
             color: var(--accent);
             text-decoration: none;
@@ -102,7 +233,7 @@
         }
         footer {
             margin-top: 60px;
-            padding-top: 32px;
+            padding-top: 24px;
             border-top: 1px solid var(--border);
             color: var(--secondary);
             font-size: 14px;
@@ -112,47 +243,128 @@
             margin-bottom: 16px;
         }
         .footer-nav a {
-            margin: 0 14px;
+            margin: 0 12px;
             font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="top-nav">
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav_home">DetailCanvas Home</a> • 
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
+            </div>
+            
+        <div class="lang-select-wrapper">
+            <span class="globe-icon">🌐</span>
+            <select id="lang-select" onchange="setLanguage(this.value)" aria-label="Language">
+                <option value="en">English</option><option value="zh">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option>
+            </select>
+        </div>
+    
+        </div>
+
+        <header class="index-header">
             <img src="app-icon.png" alt="DetailCanvas App Icon" class="app-icon">
-            <div class="badge">100% Private &amp; On-Device</div>
-            <h1>DetailCanvas</h1>
-            <p class="tagline">Commercial-grade AI photo upscaler and detail restorer running entirely on your iPhone.</p>
+            <div>
+                <div class="badge" data-i18n="badge">100% Private &amp; On-Device</div>
+                <h1 class="index-title">DetailCanvas</h1>
+                <p class="tagline" data-i18n="tagline">Commercial-grade AI photo upscaler and detail restorer running entirely on your iPhone.</p>
+            </div>
         </header>
 
         <div class="grid">
             <div class="card">
-                <h3>4× Super Resolution</h3>
-                <p>Equipped with a 67M-parameter deep residual neural network (RRDBNet) to reconstruct micro-textures and fine details.</p>
+                <h3 data-i18n="c1_title">4× Super Resolution</h3>
+                <p data-i18n="c1_desc">Equipped with a 67M-parameter deep residual neural network (RRDBNet) to reconstruct micro-textures and fine details.</p>
             </div>
             <div class="card">
-                <h3>Zero Cloud Uploads</h3>
-                <p>Powered by the Apple Neural Engine (ANE) and Metal GPU. All processing occurs locally, working 100% offline.</p>
+                <h3 data-i18n="c2_title">Zero Cloud Uploads</h3>
+                <p data-i18n="c2_desc">Powered by the Apple Neural Engine (ANE) and Metal GPU. All processing occurs locally, working 100% offline.</p>
             </div>
             <div class="card">
-                <h3>Dual Enhancement Modes</h3>
-                <p>Choose between Ultra Clarity for crisp portrait hair and textures, or Natural Smooth for landscape gradations.</p>
+                <h3 data-i18n="c3_title">Dual Enhancement Modes</h3>
+                <p data-i18n="c3_desc">Choose between Ultra Clarity for crisp portrait hair and textures, or Natural Smooth for landscape gradations.</p>
             </div>
             <div class="card">
-                <h3>Encrypted Private Vault</h3>
-                <p>Keep sensitive photos in an isolated, encrypted sandbox protected by Face ID and Touch ID biometric lock.</p>
+                <h3 data-i18n="c4_title">Encrypted Private Vault</h3>
+                <p data-i18n="c4_desc">Keep sensitive photos in an isolated, encrypted sandbox protected by Face ID and Touch ID biometric lock.</p>
             </div>
         </div>
 
         <footer>
             <div class="footer-nav">
-                <a href="privacy.html">Privacy Policy</a> • 
-                <a href="terms.html">Terms of Service (EULA)</a> • 
-                <a href="support.html">Customer Support &amp; FAQ</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
             </div>
-            <p>&copy; 2026 DetailCanvas. All rights reserved.</p>
+            <p>&copy; 2026 DetailCanvas. <span data-i18n="footer_rights">All rights reserved.</span></p>
         </footer>
     </div>
+    
+    <script>
+        const I18N = {"nav_home": {"en": "DetailCanvas Home", "zh": "DetailCanvas 首页", "ja": "DetailCanvas ホーム", "ko": "DetailCanvas 홈", "es": "Inicio DetailCanvas", "fr": "Accueil DetailCanvas", "de": "DetailCanvas Startseite", "pt": "Início DetailCanvas"}, "nav_privacy": {"en": "Privacy Policy", "zh": "隐私政策", "ja": "プライバシーポリシー", "ko": "개인정보 처리방침", "es": "Política de Privacidad", "fr": "Politique de Confidentialité", "de": "Datenschutzerklärung", "pt": "Política de Privacidade"}, "nav_terms": {"en": "Terms of Service", "zh": "服务条款", "ja": "利用規約", "ko": "이용약관", "es": "Términos del Servicio", "fr": "Conditions d'Utilisation", "de": "Nutzungsbedingungen", "pt": "Termos de Serviço"}, "nav_support": {"en": "Support", "zh": "技术支持", "ja": "サポート", "ko": "고객 지원", "es": "Soporte", "fr": "Assistance", "de": "Kundensupport", "pt": "Suporte"}, "footer_rights": {"en": "All rights reserved.", "zh": "保留所有权利。", "ja": "無断転載を禁じます。", "ko": "All rights reserved.", "es": "Todos los derechos reservados.", "fr": "Tous droits réservés.", "de": "Alle Rechte vorbehalten.", "pt": "Todos os direitos reservados."}, "badge": {"en": "100% Private &amp; On-Device", "zh": "100% 设备端离线 · 极致隐私", "ja": "100% デバイス内処理 · 完全プライベート", "ko": "100% 온디바이스 처리 · 완벽한 개인정보 보호", "es": "100% En el Dispositivo · Máxima Privacidad", "fr": "100% Sur l'Appareil · Confidentialité Totale", "de": "100% Auf dem Gerät · Höchste Privatsphäre", "pt": "100% No Dispositivo · Privacidade Total"}, "tagline": {"en": "Commercial-grade AI photo upscaler and detail restorer running entirely on your iPhone.", "zh": "基于 iPhone 芯片端侧驱动的专业级 AI 超分辨率画质修复与放大工具。", "ja": "iPhone端末内ですべて完結する、商用レベルのAI超解像写真拡大・修復ツール。", "ko": "iPhone에서 완벽하게 구동되는 전문가급 AI 초해상도 사진 확대 및 디테일 복원 솔루션.", "es": "Mejora y restauración de fotos con IA de nivel profesional directamente en tu iPhone.", "fr": "Optimisation et restauration photo par IA de niveau professionnel, 100% sur votre iPhone.", "de": "Professionelle KI-Fotovergrößerung und Detailwiederherstellung direkt auf Ihrem iPhone.", "pt": "Aprimorador e restaurador de fotos com IA de nível profissional rodando 100% no seu iPhone."}, "c1_title": {"en": "4× Super Resolution", "zh": "4× 极清超分辨率", "ja": "4倍 超解像拡大", "ko": "4배 초해상도 확대", "es": "Superresolución 4×", "fr": "Super Résolution 4×", "de": "4× Super-Auflösung", "pt": "Super-Resolução 4×"}, "c1_desc": {"en": "Equipped with a 67M-parameter deep residual neural network (RRDBNet) to reconstruct micro-textures and fine details.", "zh": "搭载 6700 万参数深度残差神经网络 (RRDBNet)，精准重建高频微观纹理与细腻细节。", "ja": "6700万パラメータの深層残差ニューラルネットワーク（RRDBNet）で、微細なテクスチャやディテールを再構築。", "ko": "6,700만 개의 파라미터를 갖춘 심층 잔차 신경망(RRDBNet)을 통해 미세한 질감과 세부 디테일을 정밀하게 복원합니다.", "es": "Equipado con una red neuronal residual profunda de 67M de parámetros (RRDBNet) para reconstruir microtexturas y detalles.", "fr": "Équipé d'un réseau neuronal résiduel profond de 67M de paramètres (RRDBNet) pour reconstruire les micro-textures.", "de": "Ausgestattet mit einem tiefen neuronalen Residualnetzwerk (RRDBNet) mit 67 Mio. Parametern für feinste Texturen.", "pt": "Equipado com uma rede neural residual profunda de 67M de parâmetros (RRDBNet) para reconstruir microtexturas e detalhes."}, "c2_title": {"en": "Zero Cloud Uploads", "zh": "零云端上传", "ja": "クラウド送信ゼロ", "ko": "클라우드 업로드 제로", "es": "Sin Subidas a la Nube", "fr": "Aucun Téléversement Cloud", "de": "Kein Cloud-Upload", "pt": "Zero Uploads na Nuvem"}, "c2_desc": {"en": "Powered by the Apple Neural Engine (ANE) and Metal GPU. All processing occurs locally, working 100% offline.", "zh": "深度调用 Apple 神经网络引擎 (ANE) 与 Metal GPU，全流程端侧离线计算，无网络照常使用。", "ja": "Apple Neural Engine（ANE）とMetal GPUで動作。写真が外に出ることはなく、機内モードでもオフラインで利用可能。", "ko": "Apple Neural Engine(ANE)과 Metal GPU로 구동되어 100% 오프라인 상태에서도 기기 내에서만 처리됩니다.", "es": "Impulsado por Apple Neural Engine (ANE) y GPU Metal. Todo el procesamiento se realiza localmente y funciona sin conexión.", "fr": "Propulsé par l'Apple Neural Engine (ANE) et le GPU Metal. Traitement 100% local, fonctionnant entièrement hors ligne.", "de": "Unterstützt durch die Apple Neural Engine (ANE) und Metal GPU. Alle Berechnungen erfolgen lokal und 100% offline.", "pt": "Alimentado pelo Apple Neural Engine (ANE) e GPU Metal. Todo o processamento ocorre localmente e funciona 100% offline."}, "c3_title": {"en": "Dual Enhancement Modes", "zh": "双增强引擎模式", "ja": "2つの補正エンジンモード", "ko": "듀얼 향상 모드", "es": "Modo de Mejora Dual", "fr": "Double Mode d'Amélioration", "de": "Duale Verbesserungsmodi", "pt": "Modo Duplo de Aprimoramento"}, "c3_desc": {"en": "Choose between Ultra Clarity for crisp portrait hair and textures, or Natural Smooth for landscape gradations.", "zh": "「超清模式」锐利还原发丝与特写微细节；「自然模式」柔和呈现风景与自然阶调过渡。", "ja": "「超解像モード」で髪の毛や質感をクッキリ再現、「ナチュラルモード」で風景の階調を滑らかに表現。", "ko": "인물 머리카락과 질감을 살리는 '울트라 선명 모드'와 풍경 그라데이션에 적합한 '자연스러운 스무스 모드'를 지원합니다.", "es": "Elige 'Ultra Claridad' para cabello y texturas nítidas, o 'Suave Natural' para transiciones suaves de paisaje.", "fr": "Choisissez 'Ultra Netteté' pour les portraits et textures, ou 'Lissage Naturel' pour les dégradés de paysages.", "de": "Wählen Sie 'Ultra-Klarheit' für scharfe Details und Haare oder 'Natürlich-Sanft' für weiche Landschaftsverläufe.", "pt": "Escolha 'Ultra Clareza' para cabelos e texturas nítidas, ou 'Suave Natural' para gradientes suaves de paisagens."}, "c4_title": {"en": "Encrypted Private Vault", "zh": "硬件级私密相册", "ja": "暗号化プライベート保管庫", "ko": "암호화된 비공개 보관함", "es": "Bóveda Privada Encriptada", "fr": "Coffre-Fort Privé Chiffré", "de": "Verschlüsselter Privattresor", "pt": "Cofre Privado Criptografado"}, "c4_desc": {"en": "Keep sensitive photos in an isolated, encrypted sandbox protected by Face ID and Touch ID biometric lock.", "zh": "敏感照片独立存储于隔离加密沙盒，支持 Face ID 与 Touch ID 生物识别解锁防护。", "ja": "大切な写真を暗号化サンドボックスに安全保管。Face ID / Touch ID の生体認証でしっかり保護。", "ko": "민감한 사진을 격리된 암호화 샌드박스에 보관하고 Face ID 및 Touch ID 생체 인식으로 안전하게 보호합니다.", "es": "Guarda fotos confidenciales en un entorno aislado y encriptado, protegido por Face ID y Touch ID.", "fr": "Conservez vos photos sensibles dans un espace isolé et chiffré, sécurisé par Face ID et Touch ID.", "de": "Schützen Sie vertrauliche Fotos in einem isolierten, verschlüsselten Bereich mit Face ID und Touch ID.", "pt": "Mantenha fotos confidenciais em um sandbox isolado e criptografado, protegido por Face ID e Touch ID."}};
+
+        function setLanguage(lang) {
+            if (!I18N['nav_privacy'][lang]) {
+                lang = 'en';
+            }
+            localStorage.setItem('dc_lang', lang);
+            
+            // Update select dropdown
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            // Update html lang attribute
+            const htmlLangMap = {
+                'en': 'en',
+                'zh': 'zh-CN',
+                'ja': 'ja',
+                'ko': 'ko',
+                'es': 'es',
+                'fr': 'fr',
+                'de': 'de',
+                'pt': 'pt-BR'
+            };
+            document.documentElement.lang = htmlLangMap[lang] || lang;
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (I18N[key] && I18N[key][lang]) {
+                    el.innerHTML = I18N[key][lang];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('dc_lang');
+            
+            let initialLang = 'en'; // Safe default for US App Store reviewers
+            
+            if (paramLang && I18N['nav_privacy'][paramLang]) {
+                initialLang = paramLang;
+            } else if (savedLang && I18N['nav_privacy'][savedLang]) {
+                initialLang = savedLang;
+            } else if (navigator.language) {
+                const nav = navigator.language.toLowerCase();
+                if (nav.startsWith('zh')) initialLang = 'zh';
+                else if (nav.startsWith('ja')) initialLang = 'ja';
+                else if (nav.startsWith('ko')) initialLang = 'ko';
+                else if (nav.startsWith('es')) initialLang = 'es';
+                else if (nav.startsWith('fr')) initialLang = 'fr';
+                else if (nav.startsWith('de')) initialLang = 'de';
+                else if (nav.startsWith('pt')) initialLang = 'pt';
+            }
+            
+            setLanguage(initialLang);
+        });
+    </script>
+    
 </body>
 </html>

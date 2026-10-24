@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support & FAQ - DetailCanvas</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
     <style>
         :root {
             --bg: #ffffff;
@@ -32,23 +33,100 @@
             padding: 40px 20px;
         }
         .container {
-            max-width: 760px;
+            max-width: 780px;
             margin: 0 auto;
         }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .nav-links {
+            font-size: 15px;
+        }
+        .nav-links a {
+            margin-right: 12px;
+            font-weight: 500;
+        }
+        .lang-select-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 12px;
+            gap: 6px;
+        }
+        .lang-select-wrapper select {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+        }
+        .globe-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
         header {
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 24px;
+        }
+        .index-header {
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 40px;
+        }
+        .app-icon {
+            width: 104px;
+            height: 104px;
+            border-radius: 22px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
         }
         h1 {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin: 0 0 8px 0;
             letter-spacing: -0.5px;
+        }
+        .index-title {
+            font-size: 38px;
+            letter-spacing: -0.8px;
         }
         .subtitle {
             color: var(--secondary);
             font-size: 16px;
+            margin: 0;
+        }
+        .tagline {
+            font-size: 19px;
+            color: var(--secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(94, 92, 230, 0.12);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .last-updated {
+            color: var(--secondary);
+            font-size: 14px;
         }
         h2 {
             font-size: 20px;
@@ -56,6 +134,64 @@
             margin-top: 36px;
             margin-bottom: 12px;
             letter-spacing: -0.3px;
+        }
+        p, li {
+            font-size: 16px;
+            color: var(--text);
+        }
+        ul {
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 36px 0;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 24px;
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .card p {
+            color: var(--secondary);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .highlight-box {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            padding: 18px 22px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+        .highlight-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(94, 92, 230, 0.1), rgba(94, 92, 230, 0.03));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .contact-box h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
         }
         .faq-item {
             background-color: var(--card-bg);
@@ -74,19 +210,6 @@
             font-size: 15px;
             margin: 0;
             line-height: 1.5;
-        }
-        .contact-box {
-            background: linear-gradient(135deg, rgba(94, 92, 230, 0.1), rgba(94, 92, 230, 0.03));
-            border: 1px solid var(--accent);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 36px 0;
-            text-align: center;
-        }
-        .contact-box h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 20px;
         }
         .button {
             display: inline-block;
@@ -116,68 +239,152 @@
             font-size: 14px;
             text-align: center;
         }
-        .nav-links {
+        .footer-nav {
             margin-bottom: 16px;
         }
-        .nav-links a {
+        .footer-nav a {
             margin: 0 12px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="top-nav">
             <div class="nav-links">
-                <a href="index.html">DetailCanvas Home</a> • 
-                <a href="privacy.html">Privacy Policy</a> • 
-                <a href="terms.html">Terms of Service</a> • 
-                <a href="support.html">Support</a>
+                <a href="index.html" data-i18n="nav_home">DetailCanvas Home</a> • 
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
             </div>
-            <h1>Customer Support & FAQ</h1>
-            <div class="subtitle">Need help with DetailCanvas? We're here for you.</div>
+            
+        <div class="lang-select-wrapper">
+            <span class="globe-icon">🌐</span>
+            <select id="lang-select" onchange="setLanguage(this.value)" aria-label="Language">
+                <option value="en">English</option><option value="zh">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option>
+            </select>
+        </div>
+    
+        </div>
+
+        <header>
+            <h1 data-i18n="h1">Customer Support &amp; FAQ</h1>
+            <div class="subtitle" data-i18n="subtitle">Need help with DetailCanvas? We're here for you.</div>
         </header>
 
         <div class="contact-box">
-            <h3>Have a Question or Found a Bug?</h3>
-            <p>Our team is happy to assist you with any questions, bug reports, or feature requests.</p>
-            <a href="mailto:support@detailcanvas.app" class="button">Contact Support</a>
+            <h3 data-i18n="box_title">Have a Question or Found a Bug?</h3>
+            <p data-i18n="box_desc">Our team is happy to assist you with any questions, bug reports, or feature requests.</p>
+            <p style="margin: 10px 0; font-weight: 500;">
+                <span data-i18n="box_email_label">Support Email: </span>
+                <a href="mailto:leoliops@outlook.com">leoliops@outlook.com</a>
+            </p>
+            <a href="mailto:leoliops@outlook.com" class="button" data-i18n="box_btn">Contact Support</a>
         </div>
 
-        <h2>Frequently Asked Questions</h2>
+        <h2 data-i18n="faq_heading">Frequently Asked Questions</h2>
 
         <div class="faq-item">
-            <div class="faq-question">Are my photos uploaded to the cloud or external servers?</div>
-            <p class="faq-answer">Never. DetailCanvas processes all images 100% locally on your iPhone using the Apple Neural Engine (ANE) and Metal GPU. Your pictures never leave your device, and the app works completely offline.</p>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">What is the difference between "Ultra Clarity" and "Natural Smooth" modes?</div>
-            <p class="faq-answer"><strong>Ultra Clarity</strong> leverages the Apple Neural Engine for maximum sharpness, reconstructing crisp high-frequency micro-textures (ideal for portraits, hair, and close-ups). <strong>Natural Smooth</strong> provides smooth gradients and stable transitions (ideal for complex landscapes or wide-angle photography).</p>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">How do I restore my Pro subscription on a new device?</div>
-            <p class="faq-answer">Open the side drawer menu in DetailCanvas, tap the Pro upgrade banner, and tap "Restore purchases" at the bottom of the paywall. Ensure you are signed in with the same Apple ID used to make the original purchase.</p>
+            <div class="faq-question" data-i18n="q1">Are my photos uploaded to the cloud or external servers?</div>
+            <p class="faq-answer" data-i18n="a1">Never. DetailCanvas processes all images 100% locally on your iPhone using the Apple Neural Engine (ANE) and Metal GPU. Your pictures never leave your device, and the app works completely offline.</p>
         </div>
 
         <div class="faq-item">
-            <div class="faq-question">How do I cancel or manage my subscription?</div>
-            <p class="faq-answer">Open your iPhone <strong>Settings</strong> app &gt; tap your <strong>Apple Account profile</strong> at the top &gt; tap <strong>Subscriptions</strong> &gt; select <strong>DetailCanvas Pro</strong> &gt; tap <strong>Cancel Subscription</strong>.</p>
+            <div class="faq-question" data-i18n="q2">What is the difference between "Ultra Clarity" and "Natural Smooth" modes?</div>
+            <p class="faq-answer" data-i18n="a2"><strong>Ultra Clarity</strong> leverages the Apple Neural Engine for maximum sharpness, reconstructing crisp high-frequency micro-textures (ideal for portraits, hair, and close-ups). <strong>Natural Smooth</strong> provides smooth gradients and stable transitions (ideal for complex landscapes or wide-angle photography).</p>
         </div>
 
         <div class="faq-item">
-            <div class="faq-question">How does the Private Photo Vault work?</div>
-            <p class="faq-answer">The Private Photo Vault stores photos in an isolated app sandbox protected by 256-bit encryption. The encryption key is kept inside your iOS Keychain, and unlocking the vault requires biometric verification (Face ID or Touch ID).</p>
+            <div class="faq-question" data-i18n="q3">How do I restore my Pro subscription on a new device?</div>
+            <p class="faq-answer" data-i18n="a3">Open the side drawer menu in DetailCanvas, tap the Pro upgrade banner, and tap "Restore purchases" at the bottom of the paywall. Ensure you are signed in with the same Apple ID used to make the original purchase.</p>
         </div>
 
         <div class="faq-item">
-            <div class="faq-question">Why did my upscale fail or take longer on an older image?</div>
-            <p class="faq-answer">Deep neural network upscaling requires substantial computational power. Very large input images are automatically tiled or safety-scaled to prevent device memory exhaustion. If you encounter any issue, try switching between Ultra Clarity and Natural Smooth modes.</p>
+            <div class="faq-question" data-i18n="q4">How do I cancel or manage my subscription?</div>
+            <p class="faq-answer" data-i18n="a4">Open your iPhone <strong>Settings</strong> app &gt; tap your <strong>Apple Account profile</strong> at the top &gt; tap <strong>Subscriptions</strong> &gt; select <strong>DetailCanvas Pro</strong> &gt; tap <strong>Cancel Subscription</strong>.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" data-i18n="q5">How does the Private Photo Vault work?</div>
+            <p class="faq-answer" data-i18n="a5">The Private Photo Vault stores photos in an isolated app sandbox protected by 256-bit encryption. The encryption key is kept inside your iOS Keychain, and unlocking the vault requires biometric verification (Face ID or Touch ID).</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" data-i18n="q6">Why did my upscale fail or take longer on an older image?</div>
+            <p class="faq-answer" data-i18n="a6">Deep neural network upscaling requires substantial computational power. Very large input images are automatically tiled or safety-scaled to prevent device memory exhaustion. If you encounter any issue, try switching between Ultra Clarity and Natural Smooth modes.</p>
         </div>
 
         <footer>
-            <p>&copy; 2026 DetailCanvas. All rights reserved.</p>
+            <div class="footer-nav">
+                <a href="index.html" data-i18n="nav_home">Home</a> • 
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a> • 
+                <a href="terms.html" data-i18n="nav_terms">Terms of Service</a> • 
+                <a href="support.html" data-i18n="nav_support">Support</a>
+            </div>
+            <p>&copy; 2026 DetailCanvas. <span data-i18n="footer_rights">All rights reserved.</span></p>
         </footer>
     </div>
+    
+    <script>
+        const I18N = {"nav_home": {"en": "DetailCanvas Home", "zh": "DetailCanvas 首页", "ja": "DetailCanvas ホーム", "ko": "DetailCanvas 홈", "es": "Inicio DetailCanvas", "fr": "Accueil DetailCanvas", "de": "DetailCanvas Startseite", "pt": "Início DetailCanvas"}, "nav_privacy": {"en": "Privacy Policy", "zh": "隐私政策", "ja": "プライバシーポリシー", "ko": "개인정보 처리방침", "es": "Política de Privacidad", "fr": "Politique de Confidentialité", "de": "Datenschutzerklärung", "pt": "Política de Privacidade"}, "nav_terms": {"en": "Terms of Service", "zh": "服务条款", "ja": "利用規約", "ko": "이용약관", "es": "Términos del Servicio", "fr": "Conditions d'Utilisation", "de": "Nutzungsbedingungen", "pt": "Termos de Serviço"}, "nav_support": {"en": "Support", "zh": "技术支持", "ja": "サポート", "ko": "고객 지원", "es": "Soporte", "fr": "Assistance", "de": "Kundensupport", "pt": "Suporte"}, "footer_rights": {"en": "All rights reserved.", "zh": "保留所有权利。", "ja": "無断転載を禁じます。", "ko": "All rights reserved.", "es": "Todos los derechos reservados.", "fr": "Tous droits réservés.", "de": "Alle Rechte vorbehalten.", "pt": "Todos os direitos reservados."}, "h1": {"en": "Customer Support &amp; FAQ", "zh": "客户支持与常见问题 (FAQ)", "ja": "カスタマーサポート＆FAQ", "ko": "고객 지원 및 자주 묻는 질문 (FAQ)", "es": "Soporte al Cliente y Preguntas Frecuentes", "fr": "Support Client &amp; FAQ", "de": "Kundensupport &amp; Häufige Fragen", "pt": "Suporte ao Cliente e Perguntas Frequentes"}, "subtitle": {"en": "Need help with DetailCanvas? We're here for you.", "zh": "使用 DetailCanvas 遇到疑问？我们将竭诚为您解答。", "ja": "DetailCanvasのご利用でお困りですか？お気軽にお問い合わせください。", "ko": "DetailCanvas 사용 중 도움이 필요하신가요? 언제든 문의해 주세요.", "es": "¿Necesitas ayuda con DetailCanvas? Estamos aquí para ayudarte.", "fr": "Besoin d'aide avec DetailCanvas ? Nous sommes là pour vous.", "de": "Brauchen Sie Hilfe mit DetailCanvas? Wir sind für Sie da.", "pt": "Precisa de ajuda com o DetailCanvas? Estamos à disposição."}, "box_title": {"en": "Have a Question or Found a Bug?", "zh": "遇到疑问或发现问题？", "ja": "ご質問や不具合の報告はこちら", "ko": "질문이 있거나 버그를 발견하셨나요?", "es": "¿Tienes alguna pregunta o encontraste un problema?", "fr": "Une question ou un problème à signaler ?", "de": "Haben Sie Fragen oder einen Fehler gefunden?", "pt": "Tem dúvidas ou encontrou algum problema?"}, "box_desc": {"en": "Our team is happy to assist you with any questions, bug reports, or feature requests.", "zh": "我们的团队很乐意为您解答任何问题、排查故障或听取您的功能建议。", "ja": "ご質問、不具合報告、新機能のご要望など、お気軽にご連絡ください。", "ko": "궁금한 점이나 버그 신고, 기능 제안 등 무엇이든 친절하게 도와드리겠습니다.", "es": "Nuestro equipo estará encantado de ayudarte con cualquier pregunta o solicitud.", "fr": "Notre équipe est à votre disposition pour toute question, rapport de bug ou suggestion.", "de": "Unser Team hilft Ihnen gerne bei allen Fragen, Fehlern oder Feedback weiter.", "pt": "Nossa equipe terá prazer em ajudar com dúvidas, bugs ou sugestões de recursos."}, "box_email_label": {"en": "Support Email: ", "zh": "支持邮箱：", "ja": "サポートメール：", "ko": "지원 이메일: ", "es": "Correo de Soporte: ", "fr": "Email d'Assistance : ", "de": "Support-E-Mail: ", "pt": "E-mail de Suporte: "}, "box_btn": {"en": "Contact Support", "zh": "发送邮件咨询", "ja": "サポートに連絡", "ko": "고객 지원 문의하기", "es": "Contactar con Soporte", "fr": "Contacter l'Assistance", "de": "Support Kontaktieren", "pt": "Falar com o Suporte"}, "faq_heading": {"en": "Frequently Asked Questions", "zh": "常见问题与解答", "ja": "よくある質問 (FAQ)", "ko": "자주 묻는 질문", "es": "Preguntas Frecuentes", "fr": "Foire Aux Questions", "de": "Häufig Gestellte Fragen", "pt": "Perguntas Frequentes"}, "q1": {"en": "Are my photos uploaded to the cloud or external servers?", "zh": "我的照片会被上传到云端或外部服务器吗？", "ja": "写真はクラウドや外部サーバーに送信されますか？", "ko": "사진이 클라우드나 외부 서버로 업로드되나요?", "es": "¿Mis fotos se suben a la nube o a servidores externos?", "fr": "Mes photos sont-elles envoyées sur le cloud ou des serveurs tiers ?", "de": "Werden meine Fotos in die Cloud oder auf Server hochgeladen?", "pt": "Minhas fotos são enviadas para a nuvem ou servidores externos?"}, "a1": {"en": "Never. DetailCanvas processes all images 100% locally on your iPhone using the Apple Neural Engine (ANE) and Metal GPU. Your pictures never leave your device, and the app works completely offline.", "zh": "绝对不会。DetailCanvas 的图像放大与画质增强 100% 在您的 iPhone 本地运行，由 Apple 神经网络引擎 (ANE) 和 Metal GPU 深度驱动。您的照片绝不离开手机，断网无信号也能正常使用。", "ja": "絶対にありません。すべての画像処理はApple Neural EngineとMetal GPUを利用し、100%端末内で完結します。写真は外部に送信されず、完全オフラインで動作します。", "ko": "절대 업로드되지 않습니다. DetailCanvas의 모든 이미지 처리는 Apple Neural Engine(ANE)과 Metal GPU를 활용하여 100% 기기 내에서 로컬로 진행됩니다. 오프라인에서도 작동합니다.", "es": "Nunca. DetailCanvas procesa todas las imágenes localmente al 100% en tu iPhone mediante ANE y GPU Metal. Tus fotos nunca salen del dispositivo y la app funciona sin conexión.", "fr": "Jamais. DetailCanvas traite toutes les images localement sur votre iPhone grâce à l'ANE et au GPU Metal. Vos photos ne quittent jamais votre appareil et l'application fonctionne hors ligne.", "de": "Niemals. DetailCanvas verarbeitet alle Bilder zu 100% lokal auf Ihrem iPhone über die Apple Neural Engine und Metal GPU. Ihre Fotos verlassen niemals das Gerät.", "pt": "Nunca. O DetailCanvas processa todas as imagens 100% localmente no iPhone usando ANE e Metal GPU. Suas fotos nunca saem do seu aparelho e o app funciona offline."}, "q2": {"en": "What is the difference between \"Ultra Clarity\" and \"Natural Smooth\" modes?", "zh": "「超清模式」和「自然模式」有什么区别？", "ja": "「超解像モード」と「ナチュラルモード」の違いは何ですか？", "ko": "'울트라 선명'과 '자연스러운 스무스' 모드의 차이는 무엇인가요?", "es": "¿Cuál es la diferencia entre los modos 'Ultra Claridad' y 'Suave Natural'?", "fr": "Quelle est la différence entre les modes 'Ultra Netteté' et 'Lissage Naturel' ?", "de": "Was ist der Unterschied zwischen 'Ultra-Klarheit' und 'Natürlich-Sanft'?", "pt": "Qual é a diferença entre os modos 'Ultra Clareza' e 'Suave Natural'?"}, "a2": {"en": "<strong>Ultra Clarity</strong> leverages the Apple Neural Engine for maximum sharpness, reconstructing crisp high-frequency micro-textures (ideal for portraits, hair, and close-ups). <strong>Natural Smooth</strong> provides smooth gradients and stable transitions (ideal for complex landscapes or wide-angle photography).", "zh": "<strong>超清模式</strong> 深度调用 Apple 神经网络引擎（ANE），聚焦于微观纹理与高频细节重建，特别适合人像、发丝、特写与文字图像。<strong>自然模式</strong> 则注重柔和的色彩过渡与画面平滑度，更适合复杂大场景与风光摄影。", "ja": "<strong>超解像モード</strong>はApple Neural Engineを活用して髪の毛や微細テクスチャを高精細に復元します（ポートレートや接写に最適）。<strong>ナチュラルモード</strong>は階調の滑らかさを重視し、広大な風景やグラデーションに最適です。", "ko": "<strong>울트라 선명</strong>은 Apple Neural Engine을 극대화하여 인물 머리카락, 질감 등 고주파 디테일을 또렷하게 재구성합니다. <strong>자연스러운 스무스</strong>는 풍경과 부드러운 그라데이션 표현에 탁월합니다.", "es": "<strong>Ultra Claridad</strong> aprovecha el Neural Engine para máxima nitidez y microtexturas (ideal para retratos). <strong>Suave Natural</strong> ofrece gradientes suaves (ideal para paisajes complejos).", "fr": "<strong>Ultra Netteté</strong> exploite le Neural Engine pour une netteté maximale des textures et portraits. <strong>Lissage Naturel</strong> offre des dégradés doux pour les paysages.", "de": "<strong>Ultra-Klarheit</strong> nutzt die Neural Engine für maximale Schärfe und feine Texturen (ideal für Porträts). <strong>Natürlich-Sanft</strong> bietet weiche Übergänge für Landschaften.", "pt": "<strong>Ultra Clareza</strong> usa o Neural Engine para nitidez máxima e microtexturas (ideal para retratos). <strong>Suave Natural</strong> oferece gradientes suaves para paisagens."}, "q3": {"en": "How do I restore my Pro subscription on a new device?", "zh": "如何在新设备上恢复我的 Pro 会员权益？", "ja": "新しい端末でProサブスクリプションを復元するにはどうすればいいですか？", "ko": "새 기기에서 Pro 구독을 복원하려면 어떻게 하나요?", "es": "¿Cómo restauro mi suscripción Pro en un nuevo dispositivo?", "fr": "Comment restaurer mon abonnement Pro sur un nouvel appareil ?", "de": "Wie stelle ich mein Pro-Abonnement auf einem neuen Gerät wieder her?", "pt": "Como restaurar minha assinatura Pro em um novo dispositivo?"}, "a3": {"en": "Open the side drawer menu in DetailCanvas, tap the Pro upgrade banner, and tap \"Restore purchases\" at the bottom of the paywall. Ensure you are signed in with the same Apple ID used to make the original purchase.", "zh": "打开 DetailCanvas 侧边抽屉菜单，点击 Pro 会员横幅，在订阅页底部点击「恢复购买 (Restore purchases)」。请确保当前设备登录的 Apple ID 与当初购买时的 Apple ID 一致。", "ja": "DetailCanvasのサイドメニューを開き、Proバナーをタップして、購入画面下部の「購入の復元（Restore purchases）」をタップしてください。購入時と同じApple IDでログインしている必要があります。", "ko": "DetailCanvas의 사이드 메뉴에서 Pro 업그레이드 배너를 탭한 후 결제 화면 하단의 '구매 내역 복원(Restore purchases)'을 누르세요. 구매 당시와 동일한 Apple ID로 로그인되어 있어야 합니다.", "es": "Abre el menú lateral de DetailCanvas, toca el banner Pro y pulsa 'Restaurar compras' al final de la pantalla. Asegúrate de haber iniciado sesión con el mismo Apple ID.", "fr": "Ouvrez le menu latéral de DetailCanvas, appuyez sur la bannière Pro, puis sur 'Restaurer les achats' au bas de la page. Vérifiez que vous êtes connecté avec le même identifiant Apple.", "de": "Öffnen Sie das Seitenmenü in DetailCanvas, tippen Sie auf das Pro-Banner und unten auf 'Käufe wiederherstellen'. Stellen Sie sicher, dass Sie mit derselben Apple-ID angemeldet sind.", "pt": "Abra o menu lateral no DetailCanvas, toque no banner Pro e selecione 'Restaurar compras' no rodapé. Certifique-se de estar conectado com o mesmo ID Apple da compra."}, "q4": {"en": "How do I cancel or manage my subscription?", "zh": "如何取消或管理我的自动续订订阅？", "ja": "サブスクリプションの解約・管理はどこで行えますか？", "ko": "구독을 취소하거나 관리하려면 어떻게 하나요?", "es": "¿Cómo cancelo o administro mi suscripción?", "fr": "Comment résilier ou gérer mon abonnement ?", "de": "Wie kann ich mein Abonnement kündigen oder verwalten?", "pt": "Como cancelar ou gerenciar minha assinatura?"}, "a4": {"en": "Open your iPhone <strong>Settings</strong> app &gt; tap your <strong>Apple Account profile</strong> at the top &gt; tap <strong>Subscriptions</strong> &gt; select <strong>DetailCanvas Pro</strong> &gt; tap <strong>Cancel Subscription</strong>.", "zh": "打开 iPhone「设置」&gt; 点击顶部的「Apple 账户头像」&gt; 点击「订阅」&gt; 找到「DetailCanvas Pro」&gt; 点击「取消订阅」。", "ja": "iPhoneの「設定」アプリを開く &gt; 最上部の「Appleアカウント名」をタップ &gt; 「サブスクリプション」 &gt; 「DetailCanvas Pro」を選択 &gt; 「サブスクリプションをキャンセル」をタップ。", "ko": "iPhone '설정' 앱 &gt; 상단 'Apple 계정 프로필' &gt; '구독' &gt; 'DetailCanvas Pro' 선택 &gt; '구독 취소'를 누르시면 됩니다.", "es": "Abre la app <strong>Ajustes</strong> de tu iPhone &gt; toca tu <strong>Perfil de Apple</strong> arriba &gt; <strong>Suscripciones</strong> &gt; selecciona <strong>DetailCanvas Pro</strong> &gt; <strong>Cancelar suscripción</strong>.", "fr": "Ouvrez l'application <strong>Réglages</strong> &gt; touchez votre <strong>Identifiant Apple</strong> en haut &gt; <strong>Abonnements</strong> &gt; <strong>DetailCanvas Pro</strong> &gt; <strong>Résilier l'abonnement</strong>.", "de": "Öffnen Sie die iPhone-<strong>Einstellungen</strong> &gt; tippen Sie oben auf Ihr <strong>Apple-Konto</strong> &gt; <strong>Abonnements</strong> &gt; <strong>DetailCanvas Pro</strong> &gt; <strong>Abonnement kündigen</strong>.", "pt": "Abra os <strong>Ajustes</strong> do iPhone &gt; toque no seu <strong>ID Apple</strong> no topo &gt; <strong>Assinaturas</strong> &gt; <strong>DetailCanvas Pro</strong> &gt; <strong>Cancelar Assinatura</strong>."}, "q5": {"en": "How does the Private Photo Vault work?", "zh": "硬件级私密相册是如何保障安全的？", "ja": "暗号化プライベート保管庫はどのように安全を保っていますか？", "ko": "비공개 사진 보관함의 보안은 어떻게 유지되나요?", "es": "¿Cómo funciona la Bóveda Privada de Fotos?", "fr": "Comment fonctionne le Coffre-Fort Privé ?", "de": "Wie funktioniert der private Fototresor?", "pt": "Como funciona o Cofre Privado de Fotos?"}, "a5": {"en": "The Private Photo Vault stores photos in an isolated app sandbox protected by 256-bit encryption. The encryption key is kept inside your iOS Keychain, and unlocking the vault requires biometric verification (Face ID or Touch ID).", "zh": "私密相册将照片存储于 App 独立的加密沙盒中，采用 256 位高强度加密，加密密钥存储在 iOS 硬件级 Keychain 中，进入私密相册必须通过 Face ID 或 Touch ID 生物识别解锁验证。", "ja": "プライベート保管庫内の写真は256ビット暗号化された専用サンドボックスに保存されます。鍵はiOS Keychain内に厳重に保護され、ロック解除にはFace IDまたはTouch IDの生体認証が必要です。", "ko": "비공개 보관함은 256비트 암호화로 보호되는 격리된 앱 샌드박스에 사진을 저장합니다. 암호화 키는 iOS 키체인에 안전하게 보관되며 Face ID 또는 Touch ID 인증이 필요합니다.", "es": "La Bóveda almacena fotos en un entorno aislado con cifrado de 256 bits. La clave se guarda en el Keychain de iOS y requiere Face ID o Touch ID para desbloquearse.", "fr": "Le coffre-fort stocke les photos dans un bac à sable sécurisé par un chiffrement 256 bits. La clé réside dans le trousseau iOS et l'accès exige Face ID ou Touch ID.", "de": "Der Tresor speichert Fotos in einer isolierten Sandbox mit 256-Bit-Verschlüsselung. Der Schlüssel liegt im iOS-Schlüsselbund und wird durch Face ID oder Touch ID entsperrt.", "pt": "O cofre armazena fotos em um sandbox isolado com criptografia de 256 bits. A chave é guardada nas Chaves do iOS e requer Face ID ou Touch ID para desbloquear."}, "q6": {"en": "Why did my upscale fail or take longer on an older image?", "zh": "为什么较老的图片处理时间较长或可能提示失败？", "ja": "解像度の高い写真や古い写真の処理に時間がかかるのはなぜですか？", "ko": "용량이 크거나 오래된 사진의 처리 시간이 오래 걸리는 이유는 무엇인가요?", "es": "¿Por qué la mejora tardó más o falló en una imagen grande?", "fr": "Pourquoi l'amélioration a-t-elle pris du temps sur une grande image ?", "de": "Warum dauerte die Vergrößerung bei einem Bild länger oder schlug fehl?", "pt": "Por que o aprimoramento demorou mais ou falhou em uma imagem grande?"}, "a6": {"en": "Deep neural network upscaling requires substantial computational power. Very large input images are automatically tiled or safety-scaled to prevent device memory exhaustion. If you encounter any issue, try switching between Ultra Clarity and Natural Smooth modes.", "zh": "深度神经网络画质增强需要大量芯片算力。对于输入尺寸非常大的图片，系统会自动进行智能分块或防爆内存安全缩放。若遇到处理耗时较长，可尝试切换「超清模式」或「自然模式」。", "ja": "ディープラーニングによる超解像処理は膨大な計算パワーを要します。大きな画像はメモリ枯渇を防ぐため自動的にタイル分割または安全縮小処理されます。必要に応じてモードを切り替えてお試しください。", "ko": "딥러닝 초해상도 처리는 상당한 칩 연산 성능을 필요로 합니다. 매우 큰 이미지는 기기 메모리 보호를 위해 타일 분할 처리됩니다. 지연 시 다른 모드로 전환해 보세요.", "es": "La superresolución por IA requiere una gran potencia de cálculo. Las imágenes muy grandes se dividen automáticamente en mosaicos para proteger la memoria del dispositivo.", "fr": "L'agrandissement par réseau neuronal profond demande une forte puissance de calcul. Les très grandes images sont segmentées pour éviter toute surcharge de mémoire.", "de": "KI-Vergrößerungen erfordern hohe Rechenleistung. Sehr große Bilder werden automatisch gekachelt, um den Gerätespeicher zu schonen.", "pt": "O aprimoramento por rede neural profunda exige alto poder de processamento. Imagens muito grandes são divididas em blocos para poupar a memória do aparelho."}};
+
+        function setLanguage(lang) {
+            if (!I18N['nav_privacy'][lang]) {
+                lang = 'en';
+            }
+            localStorage.setItem('dc_lang', lang);
+            
+            // Update select dropdown
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            // Update html lang attribute
+            const htmlLangMap = {
+                'en': 'en',
+                'zh': 'zh-CN',
+                'ja': 'ja',
+                'ko': 'ko',
+                'es': 'es',
+                'fr': 'fr',
+                'de': 'de',
+                'pt': 'pt-BR'
+            };
+            document.documentElement.lang = htmlLangMap[lang] || lang;
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (I18N[key] && I18N[key][lang]) {
+                    el.innerHTML = I18N[key][lang];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('dc_lang');
+            
+            let initialLang = 'en'; // Safe default for US App Store reviewers
+            
+            if (paramLang && I18N['nav_privacy'][paramLang]) {
+                initialLang = paramLang;
+            } else if (savedLang && I18N['nav_privacy'][savedLang]) {
+                initialLang = savedLang;
+            } else if (navigator.language) {
+                const nav = navigator.language.toLowerCase();
+                if (nav.startsWith('zh')) initialLang = 'zh';
+                else if (nav.startsWith('ja')) initialLang = 'ja';
+                else if (nav.startsWith('ko')) initialLang = 'ko';
+                else if (nav.startsWith('es')) initialLang = 'es';
+                else if (nav.startsWith('fr')) initialLang = 'fr';
+                else if (nav.startsWith('de')) initialLang = 'de';
+                else if (nav.startsWith('pt')) initialLang = 'pt';
+            }
+            
+            setLanguage(initialLang);
+        });
+    </script>
+    
 </body>
 </html>
